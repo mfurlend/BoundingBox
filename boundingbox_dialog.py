@@ -51,7 +51,7 @@ class BoundingBoxDialog(QtGui.QDialog, FORM_CLASS):
         xmax=iface.mapCanvas().extent().xMaximum()
         ymin=iface.mapCanvas().extent().yMinimum()
         ymax=iface.mapCanvas().extent().yMaximum()
-        bb1= str(xmin) + ","+str(ymin) + "," +str(xmax) + "," +str(ymax)
+        bb1= str(ymin) + ","+str(xmin) + "," +str(ymax) + "," +str(xmax)
         bb=str(bb1)
         self.textOutput.setText(bb)
         layer = iface.activeLayer()
