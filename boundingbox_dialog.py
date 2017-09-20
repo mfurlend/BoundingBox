@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- BoundingBoxDialog
+ BBoxDialog
                                  A QGIS plugin
  This plugin returns the xmin, ymin, xmax, ymax of the current view window, 
  and the GetMap request of the selected WMS. 
@@ -35,10 +35,10 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'boundingbox_dialog_base.ui'))
 
 
-class BoundingBoxDialog(QtGui.QDialog, FORM_CLASS):
+class BBoxDialog(QtGui.QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         """Constructor."""
-        super(BoundingBoxDialog, self).__init__(parent)
+        super(BBoxDialog, self).__init__(parent)
         # Set up the user interface from Designer.
         # After setupUI you can access any designer object by doing
         # self.<objectname>, and you can use autoconnect slots - see

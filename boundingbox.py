@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- BoundingBox
+ BBox
                                  A QGIS plugin
  This plugin returns the xmin, ymin, xmax, ymax of the current view window, 
  and the GetMap request of the selected WMS. 
@@ -26,11 +26,11 @@ from PyQt4.QtGui import QAction, QIcon
 # Initialize Qt resources from file resources.py
 import resources
 # Import the code for the dialog
-from boundingbox_dialog import BoundingBoxDialog
+from boundingbox_dialog import BBoxDialog
 import os.path
 
 
-class BoundingBox:
+class BBox:
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
@@ -50,7 +50,7 @@ class BoundingBox:
         locale_path = os.path.join(
             self.plugin_dir,
             'i18n',
-            'BoundingBox_{}.qm'.format(locale))
+            'BBox_{}.qm'.format(locale))
 
         if os.path.exists(locale_path):
             self.translator = QTranslator()
@@ -62,10 +62,10 @@ class BoundingBox:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&BoundingBox')
+        self.menu = self.tr(u'&BBox')
         # TODO: We are going to let the user set this up in a future iteration
-        self.toolbar = self.iface.addToolBar(u'BoundingBox')
-        self.toolbar.setObjectName(u'BoundingBox')
+        self.toolbar = self.iface.addToolBar(u'BBox')
+        self.toolbar.setObjectName(u'BBox')
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -80,7 +80,7 @@ class BoundingBox:
         :rtype: QString
         """
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
-        return QCoreApplication.translate('BoundingBox', message)
+        return QCoreApplication.translate('BBox', message)
 
 
     def add_action(
@@ -134,7 +134,7 @@ class BoundingBox:
         """
 
         # Create the dialog (after translation) and keep reference
-        self.dlg = BoundingBoxDialog()
+        self.dlg = BBoxDialog()
 
         icon = QIcon(icon_path)
         action = QAction(icon, text, parent)
@@ -162,7 +162,7 @@ class BoundingBox:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/BoundingBox/icon.png'
+        icon_path = ':/plugins/BBox/icon.png'
         self.add_action(
             icon_path,
             text=self.tr(u'Get Bounding Box'),
@@ -174,7 +174,7 @@ class BoundingBox:
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
             self.iface.removePluginWebMenu(
-                self.tr(u'&BoundingBox'),
+                self.tr(u'&BBox'),
                 action)
             self.iface.removeToolBarIcon(action)
         # remove the toolbar

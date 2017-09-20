@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- BoundingBox
+ BBox
                                  A QGIS plugin
  This plugin returns the xmin, ymin, xmax, ymax of the current view window, and the GetMap request of the selected WMS. 
                              -------------------
@@ -25,11 +25,11 @@
 
 # noinspection PyPep8Naming
 def classFactory(iface):  # pylint: disable=invalid-name
-    """Load BoundingBox class from file BoundingBox.
+    """Load BBox class from file BBox.
 
     :param iface: A QGIS interface instance.
     :type iface: QgsInterface
     """
     #
-    from .boundingbox import BoundingBox
-    return BoundingBox(iface)
+    from .boundingbox import BBox
+    return BBox(iface)
